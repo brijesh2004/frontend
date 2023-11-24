@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
 
+import { useState } from 'react';
+import './App.css';
+import Signup from './components/Signup';
+import Login from './components/Login';
 function App() {
+  const [login, setLogin] = useState(0);
+  const Onlogin = () =>{
+    setLogin(0);
+  }
+  const OnSignup = () =>{
+    setLogin(1);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='main_div'>
+    <button onClick={Onlogin}>Login</button>
+    <button onClick={OnSignup}>Signup</button>
+     {/* <Signup/> */}
+      
+     {
+      login?<Signup/>:<Login/>
+     }
     </div>
   );
 }
