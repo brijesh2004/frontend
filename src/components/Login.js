@@ -6,6 +6,7 @@ const Signup = () => {
   const [emailoruser , setEmailoruser] = useState("");
   const [password , setPassword] = useState("");
   const [forget , setForget] = useState(1);
+  const [login , setLogin] = useState("Login");
  
   
   
@@ -15,6 +16,7 @@ const Signup = () => {
        return;
     }
      e.preventDefault();
+     setLogin("Loging...");
      const res = await fetch('https://taskbackend-3boa.onrender.com/login',{
         method:'POST',
         headers:{
@@ -26,6 +28,7 @@ const Signup = () => {
      })
 
      const data = await res.json();
+     setLogin("Loging");
       if(res.status===501|| !data){
         alert("User Not found")
       }
@@ -57,7 +60,7 @@ const Signup = () => {
         onChange={(e)=>setPassword(e.target.value)}
       /> <br /><br />
 
-      <button onClick={onSubmit}>Login</button>
+      <button onClick={onSubmit}>{login}</button>
   <br />
     <p>--OR--</p>
       <button onClick={()=>setForget(0)}>Forget Password</button> </div>:<Forget/>}

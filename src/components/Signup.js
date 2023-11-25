@@ -9,6 +9,8 @@ const Signup = () => {
     cpassword: ""
   });
 
+  const [signup , setSignup] = useState("Signup");
+
   const onSubmit = async (e) =>{
     e.preventDefault();
     if ((user.username).length === 0 || (user.email).length === 0 || (user.password).length === 0 || (user.cpassword).length === 0) {
@@ -20,6 +22,7 @@ const Signup = () => {
         alert("password are not matching ");
         return;
     }
+    setSignup("Registering...");
     const res = await fetch('https://taskbackend-3boa.onrender.com/signup',{
        method:'POST',
        headers:{
@@ -29,7 +32,8 @@ const Signup = () => {
          user
        })
     })
-
+     
+    setSignup("Signup");
      if(res.status===409){
        alert("User Already exist");
      }
@@ -82,7 +86,7 @@ const Signup = () => {
         onChange={handleInputChange}
       /> <br /><br />
 
-      <button onClick={onSubmit}>Signup</button>
+      <button onClick={onSubmit}>{signup}</button>
     </div>
   );
 };

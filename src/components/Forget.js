@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 const Forget = () => {
     const [email , setEmail] = useState("");
     const [password , setPassword] = useState("");
+    const [forget , setForget] = useState("Reset");
 
     const onSubmit =async (e) =>{
         e.preventDefault();
@@ -10,6 +11,7 @@ const Forget = () => {
             alert("please fill all the filed");
             return;
         }
+        setForget("Resetting...");
         const res = await fetch("https://taskbackend-3boa.onrender.com/forgetpassword" , {
             method:"POST",
             headers:{
@@ -19,7 +21,8 @@ const Forget = () => {
                 email , password
               })
         })
-        const data = res.json();
+        const data = await res.json();
+        setForget("Reset");
         if(res.status===501){
             alert("User not exist");
         }
@@ -43,7 +46,7 @@ const Forget = () => {
       value={password}
       onChange={(e)=>setPassword(e.target.value)}
        placeholder='create new password'/> <br /><br />
-      <button onClick={onSubmit}>Change password</button>
+      <button onClick={onSubmit}>{forget}</button>
     </div>
   )
 }
