@@ -10,7 +10,7 @@ const Forget = () => {
             alert("please fill all the filed");
             return;
         }
-        const res = await fetch("http://localhost:8000/forgetpassword" , {
+        const res = await fetch("https://taskbackend-3boa.onrender.com/forgetpassword" , {
             method:"POST",
             headers:{
                 "Content-Type" : "application/json"

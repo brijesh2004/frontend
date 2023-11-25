@@ -20,7 +20,7 @@ const Signup = () => {
         alert("password are not matching ");
         return;
     }
-    const res = await fetch('http://localhost:8000/signup',{
+    const res = await fetch('https://taskbackend-3boa.onrender.com/signup',{
        method:'POST',
        headers:{
          "Content-Type" : "application/json"
